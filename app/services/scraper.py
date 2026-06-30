@@ -9,6 +9,7 @@ from mutagen.mp3 import MP3
 from mutagen.id3 import ID3, TIT2, TPE1, TALB, TRCK, APIC, USLT
 from mutagen.flac import FLAC
 from mutagen.mp4 import MP4
+from imageio_ffmpeg import get_ffmpeg_exe
 
 from app.config import settings
 
@@ -170,7 +171,7 @@ class MusicScraper:
         try:
             mp3_path = file_path.with_suffix(".mp3")
             cmd = [
-                "ffmpeg",
+                get_ffmpeg_exe(),
                 "-i", str(file_path),
                 "-codec:a", "libmp3lame",
                 "-qscale:a", "2",  # 高质量 VBR

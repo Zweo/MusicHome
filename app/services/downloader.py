@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from datetime import datetime
 from uuid import uuid4
+from imageio_ffmpeg import get_ffmpeg_exe
 
 from app.models.song import Song
 from app.config import settings
@@ -125,7 +126,7 @@ class DownloadService:
         """使用 ffmpeg 转换为 MP3"""
         try:
             cmd = [
-                "ffmpeg",
+                get_ffmpeg_exe(),
                 "-i", str(input_path),
                 "-codec:a", "libmp3lame",
                 "-qscale:a", "2",
