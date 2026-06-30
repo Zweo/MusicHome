@@ -4,7 +4,7 @@
 
 
 ## UI
-![ui](images/UI.gif)
+![ui](https://github.com/Zweo/MusicHome/blob/main/images/UI.gif)
 
 ## 技术栈
 
