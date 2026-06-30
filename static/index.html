@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicHome</title>
+    <link rel="stylesheet" href="/static/css/themes.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/player.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/forms.css">
+</head>
+<body>
+    <!-- 背景 -->
+    <div id="bg-overlay"></div>
+
+    <!-- 主容器 -->
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">MusicHome</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-section">本地音乐</li>
+                <li class="nav-item active" data-page="local-songs">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 5 15.79 5 19s2.79 6 6 6 6-2.79 6-6V3h-4z"/></svg>
+                    <span>全部歌曲</span>
+                </li>
+                <li class="nav-item" data-page="local-artists">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <span>歌手</span>
+                </li>
+                <li class="nav-item" data-page="local-albums">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
+                    <span>专辑</span>
+                </li>
+                <li class="nav-item" data-page="local-playlists">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+                    <span>歌单</span>
+                </li>
+                <li class="nav-section">在线音乐</li>
+                <li class="nav-item" data-page="search-online">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <span>在线搜索</span>
+                </li>
+                <li class="nav-item" data-page="downloads">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span>下载管理</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="content">
+            <header class="content-header">
+                <div class="search-box">
+                    <div class="search-mode-toggle" id="search-mode-toggle">
+                        <button class="mode-btn active" data-mode="online" title="在线搜索">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </button>
+                        <button class="mode-btn" data-mode="local" title="本地搜索">
+                            <svg viewBox="0 0 24 24"><path d="M20 6H12L10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                        </button>
+                    </div>
+                    <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="search-input" placeholder="搜索歌曲、歌手、专辑...">
+                    <button class="btn-search-go" onclick="App.handleSearch(document.getElementById('search-input').value)" title="搜索">
+                        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    </button>
+                    <button class="btn-scan-minimal" onclick="LocalPage.scan()" title="扫描音乐目录">
+                        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                    </button>
+                </div>
+                <div class="theme-selector" id="theme-selector">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <span class="theme-dot" id="theme-dot"></span>
+                        <span class="theme-name" id="theme-name">默认暗色</span>
+                        <svg class="theme-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                    </button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <div class="theme-dropdown-header">选择主题</div>
+                        <div class="theme-columns">
+                            <div class="theme-column">
+                                <div class="theme-column-label">暗色系</div>
+                                <div class="theme-grid">
+                                    <div class="theme-option active" data-theme="dark" data-name="暗夜">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #FF6B9D, #C084FC)"></span>
+                                        <span>暗夜</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="miku" data-name="青绿">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #39C5BB, #00B5AD)"></span>
+                                        <span>青绿</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="reimu" data-name="红白">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #FF4757, #FFFFFF)"></span>
+                                        <span>红白</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="raiden" data-name="紫金">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #8B5CF6, #FFD700)"></span>
+                                        <span>紫金</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="ganyu" data-name="冰蓝">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #3B82F6, #60A5FA)"></span>
+                                        <span>冰蓝</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="2b" data-name="银灰">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #6B7280, #9CA3AF)"></span>
+                                        <span>银灰</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="emilia" data-name="梦紫">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #A78BFA, #C4B5FD)"></span>
+                                        <span>梦紫</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="ocean" data-name="海浪">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #006994, #40E0D0)"></span>
+                                        <span>海浪</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="fire" data-name="火焰">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #FF4500, #FFD700)"></span>
+                                        <span>火焰</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="aurora" data-name="极光">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #00FF7F, #9400D3)"></span>
+                                        <span>极光</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-column">
+                                <div class="theme-column-label">亮色系</div>
+                                <div class="theme-grid">
+                                    <div class="theme-option" data-theme="light" data-name="亮白">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #667eea, #764ba2)"></span>
+                                        <span>亮白</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="sakura" data-name="樱粉">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #FF69B4, #FFB6C1)"></span>
+                                        <span>樱粉</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="skyblue" data-name="天蓝">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #4A90D9, #87CEEB)"></span>
+                                        <span>天蓝</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="mint" data-name="薄荷">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #2ECC71, #A8E6CF)"></span>
+                                        <span>薄荷</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="sunshine" data-name="暖阳">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #F39C12, #FDEBD0)"></span>
+                                        <span>暖阳</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="lavender" data-name="薰衣草">
+                                        <span class="theme-dot" style="background: linear-gradient(135deg, #9B59B6, #D7BDE2)"></span>
+                                        <span>薰衣草</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 扫描进度条 -->
+            <div id="scan-progress" class="scan-progress" style="display: none;">
+                <div class="scan-progress-bar">
+                    <div class="scan-progress-fill" id="scan-progress-bar"></div>
+                </div>
+                <span class="scan-progress-text" id="scan-progress-text">扫描中...</span>
+            </div>
+
+            <!-- 页面内容区域 -->
+            <div class="page-container">
+                <!-- 本地歌曲页面 -->
+                <div id="page-local-songs" class="page active">
+                    <div class="page-header">
+                        <h2 class="page-title">全部歌曲</h2>
+                        <div class="page-actions">
+                            <button class="btn-refresh" onclick="LocalPage.refreshList()" title="刷新列表">
+                                <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                                <span>刷新</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="local-songs-list" class="track-list"></div>
+                    <div id="pagination" class="pagination" style="display: none;">
+                        <button class="page-btn" id="btn-prev-page" onclick="LocalPage.prevPage()">
+                            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                        </button>
+                        <div class="page-jump">
+                            <span>第</span>
+                            <input type="number" id="page-input" class="page-input" min="1" value="1" 
+                                   onkeydown="if(event.key==='Enter') LocalPage.goToPage()">
+                            <span>/ 共 <span id="total-pages">1</span> 页</span>
+                            <button class="page-jump-btn" onclick="LocalPage.goToPage()">跳转</button>
+                        </div>
+                        <button class="page-btn" id="btn-next-page" onclick="LocalPage.nextPage()">
+                            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 歌手页面 -->
+                <div id="page-local-artists" class="page">
+                    <h2 class="page-title">歌手</h2>
+                    <div id="artists-list" class="artists-grid"></div>
+                </div>
+
+                <!-- 专辑页面 -->
+                <div id="page-local-albums" class="page">
+                    <h2 class="page-title">专辑</h2>
+                    <div id="albums-list" class="albums-grid"></div>
+                </div>
+
+                <!-- 歌单页面 -->
+                <div id="page-local-playlists" class="page">
+                    <h2 class="page-title">歌单</h2>
+                    <button class="btn-create-playlist" id="btn-create-playlist" onclick="LocalPage.showCreatePlaylistModal()">+ 新建歌单</button>
+                    <div id="playlists-list" class="playlists-grid"></div>
+                </div>
+
+                <!-- 在线搜索页面 -->
+                <div id="page-search-online" class="page">
+                    <div class="page-header">
+                        <h2 class="page-title">在线搜索</h2>
+                        <div class="online-controls">
+                            <div class="source-selector">
+                                <label>音源:</label>
+                                <select id="music-source" class="source-select">
+                                    <option value="bilibili">Bilibili</option>
+                                </select>
+                            </div>
+                            <div class="quality-selector">
+                                <label>音质:</label>
+                                <select id="music-quality" class="source-select">
+                                    <option value="standard">标准</option>
+                                    <option value="high">高品</option>
+                                    <option value="super">无损</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="search-results" class="track-list"></div>
+                    <div id="load-more" class="load-more" style="display: none;">
+                        <button class="btn-load-more" onclick="OnlinePage.loadMore()">
+                            <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                            <span>加载更多</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 歌词面板 -->
+    <div class="lyrics-panel" id="lyrics-panel">
+        <div class="lyrics-header">
+            <span class="lyrics-title">歌词</span>
+            <button class="lyrics-close" id="lyrics-close">×</button>
+        </div>
+        <div class="lyrics-content" id="lyrics-content">
+            <div class="lyrics-placeholder">暂无歌词</div>
+        </div>
+    </div>
+
+    <!-- 播放器 -->
+    <div class="player" id="player">
+        <!-- 音乐律动频谱 -->
+        <div class="waveform-container" id="waveform-container">
+            <canvas id="waveform-canvas"></canvas>
+        </div>
+        <div class="player-info">
+            <div class="player-cover" id="player-cover">
+                <img src="/static/img/default-cover.png" alt="cover" id="cover-img">
+            </div>
+            <div class="player-meta">
+                <div class="player-title-container">
+                    <span class="player-title" id="player-title">未播放</span>
+                </div>
+                <span class="player-artist" id="player-artist">-</span>
+            </div>
+            <button class="btn-lyrics" id="btn-lyrics">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            </button>
+        </div>
+
+        <div class="player-controls">
+            <button class="btn-mode" id="btn-mode" title="播放模式">
+                <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+            </button>
+            <button class="btn-prev" id="btn-prev">
+                <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            </button>
+            <button class="btn-play" id="btn-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button class="btn-next" id="btn-next">
+                <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+            <button class="btn-queue" id="btn-queue" title="播放队列">
+                <svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+            </button>
+        </div>
+
+        <div class="player-progress">
+            <span class="time-current" id="time-current">0:00</span>
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress-buffered" id="progress-buffered"></div>
+                <div class="progress-played" id="progress-played"></div>
+                <div class="progress-handle" id="progress-handle"></div>
+            </div>
+            <span class="time-total" id="time-total">0:00</span>
+        </div>
+
+        <div class="player-volume">
+            <button class="btn-volume" id="btn-volume">
+                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+            <div class="volume-bar" id="volume-bar">
+                <div class="volume-level" id="volume-level"></div>
+                <div class="volume-handle" id="volume-handle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 播放队列面板 -->
+    <div class="queue-panel" id="queue-panel">
+        <div class="queue-header">
+            <span class="queue-title">播放队列</span>
+            <button class="queue-close" id="queue-close">×</button>
+        </div>
+        <div class="queue-content" id="queue-content"></div>
+    </div>
+
+    <!-- 全屏歌词面板 -->
+    <div class="fullscreen-lyrics" id="fullscreen-lyrics">
+        <div class="fullscreen-lyrics-bg" id="fullscreen-lyrics-bg"></div>
+        <div class="fullscreen-lyrics-header">
+            <button class="fullscreen-lyrics-close" id="fullscreen-lyrics-close">
+                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </button>
+            <div class="fullscreen-lyrics-info">
+                <span class="fullscreen-lyrics-title" id="fullscreen-lyrics-title">未播放</span>
+                <span class="fullscreen-lyrics-artist" id="fullscreen-lyrics-artist">-</span>
+            </div>
+        </div>
+        <div class="fullscreen-lyrics-content">
+            <div class="fullscreen-cover">
+                <img id="fullscreen-cover-img" src="/static/img/default-cover.png" alt="cover">
+            </div>
+            <div class="fullscreen-lyrics-list" id="fullscreen-lyrics-list">
+                <div class="lyrics-placeholder">暂无歌词</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框容器 -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-title"></span>
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- 右键菜单 -->
+    <div id="context-menu" class="context-menu">
+        <div class="context-menu-item" data-action="select">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            <span>选中</span>
+        </div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" data-action="edit">
+            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            <span>编辑元数据</span>
+        </div>
+        <div class="context-menu-item" data-action="scrape">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>刮削</span>
+        </div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" data-action="add-playlist">
+            <svg viewBox="0 0 24 24"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+            <span>添加到歌单</span>
+        </div>
+        <div class="context-menu-item" data-action="remove-playlist">
+            <svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+            <span>从歌单移除</span>
+        </div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item danger" data-action="delete">
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            <span>删除</span>
+        </div>
+    </div>
+
+    <!-- 批量操作栏 -->
+    <div id="batch-actions" class="batch-actions">
+        <span class="batch-count" id="batch-count">已选 0 首</span>
+        <button class="batch-btn" onclick="LocalPage.batchAddToPlaylist()">
+            <svg viewBox="0 0 24 24"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+            <span>添加到歌单</span>
+        </button>
+        <button class="batch-btn" onclick="LocalPage.batchRemoveFromPlaylist()">
+            <svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+            <span>从歌单移除</span>
+        </button>
+        <button class="batch-btn danger" onclick="LocalPage.batchDelete()">
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            <span>删除</span>
+        </button>
+        <button class="batch-btn-cancel" onclick="LocalPage.clearSelection()">取消</button>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-note">♪</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/player.js"></script>
+    <script src="/static/js/lyrics.js"></script>
+    <script src="/static/js/animations.js"></script>
+    <script src="/static/js/online.js"></script>
+    <script src="/static/js/local.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

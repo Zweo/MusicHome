@@ -1,0 +1,482 @@
+:root {
+    /* 主色调 */
+    --primary: #FF6B9D;
+    --primary-light: #FF8FB4;
+    --primary-dark: #E0527E;
+    --secondary: #C084FC;
+    --secondary-light: #D4A0FF;
+    --secondary-dark: #A855F7;
+
+    /* 点缀色 */
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+
+    /* 背景色 */
+    --bg-dark: #0F0F1A;
+    --bg-main: #1A1A2E;
+    --bg-card: #16213E;
+    --bg-card-hover: #1E2A4A;
+    --bg-overlay: rgba(15, 15, 26, 0.85);
+
+    /* 文字颜色 */
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8B8D0;
+    --text-muted: #6B6B8A;
+    --text-accent: #FF6B9D;
+
+    /* 边框 */
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+
+    /* 阴影 */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(255, 107, 157, 0.3);
+
+    /* 毛玻璃 */
+    --glass-bg: rgba(26, 26, 46, 0.7);
+    --glass-blur: blur(20px);
+
+    /* 渐变 */
+    --gradient-primary: linear-gradient(135deg, #FF6B9D, #C084FC);
+    --gradient-bg: linear-gradient(135deg, #1A1A2E, #16213E);
+    --gradient-card: linear-gradient(145deg, rgba(255, 107, 157, 0.1), rgba(192, 132, 252, 0.1));
+
+    /* 圆角 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* 间距 */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+
+    /* 字体 */
+    --font-sans: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'Consolas', 'Courier New', monospace;
+
+    /* 侧边栏宽度 */
+    --sidebar-width: 220px;
+
+    /* 播放器高度 */
+    --player-height: 90px;
+
+    /* 过渡 */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
+}
+
+/* ===== 亮色主题 ===== */
+[data-theme="light"] {
+    --bg-dark: #F5F7FA;
+    --bg-main: #FFFFFF;
+    --bg-card: #F0F2F5;
+    --bg-card-hover: #E8EAED;
+    --bg-overlay: rgba(245, 247, 250, 0.85);
+    --text-primary: #1A1A2E;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-hover: rgba(0, 0, 0, 0.15);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 20px rgba(255, 107, 157, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --gradient-bg: linear-gradient(135deg, #F5F7FA, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(255, 107, 157, 0.05), rgba(192, 132, 252, 0.05));
+}
+
+/* ===== 初音未来 (Miku) ===== */
+[data-theme="miku"] {
+    --primary: #39C5BB;
+    --primary-light: #5FD5CC;
+    --primary-dark: #2AA89E;
+    --secondary: #39C5BB;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #0A1628;
+    --bg-main: #0F1F3A;
+    --bg-card: #152747;
+    --bg-card-hover: #1C3355;
+    --text-accent: #39C5BB;
+    --shadow-glow: 0 0 20px rgba(57, 197, 187, 0.3);
+    --gradient-primary: linear-gradient(135deg, #39C5BB, #00D9FF);
+    --gradient-bg: linear-gradient(135deg, #0F1F3A, #152747);
+    --gradient-card: linear-gradient(145deg, rgba(57, 197, 187, 0.1), rgba(0, 217, 255, 0.1));
+}
+
+/* ===== 红白 (Reimu) ===== */
+[data-theme="reimu"] {
+    --primary: #FF4757;
+    --primary-light: #FF6B7A;
+    --primary-dark: #E0384A;
+    --secondary: #FFFFFF;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #1A0A0A;
+    --bg-main: #2A1010;
+    --bg-card: #351515;
+    --bg-card-hover: #401A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --text-accent: #FF4757;
+    --shadow-glow: 0 0 20px rgba(255, 71, 87, 0.3);
+    --gradient-primary: linear-gradient(135deg, #FF4757, #FFFFFF);
+    --gradient-bg: linear-gradient(135deg, #2A1010, #351515);
+    --gradient-card: linear-gradient(145deg, rgba(255, 71, 87, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+/* ===== 紫金 (Raiden) ===== */
+[data-theme="raiden"] {
+    --primary: #7B68EE;
+    --primary-light: #9B8BFF;
+    --primary-dark: #5B48CE;
+    --secondary: #FFD700;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #0A0A1A;
+    --bg-main: #12122A;
+    --bg-card: #1A1A35;
+    --bg-card-hover: #222240;
+    --text-accent: #7B68EE;
+    --shadow-glow: 0 0 20px rgba(123, 104, 238, 0.3);
+    --gradient-primary: linear-gradient(135deg, #7B68EE, #FFD700);
+    --gradient-bg: linear-gradient(135deg, #12122A, #1A1A35);
+    --gradient-card: linear-gradient(145deg, rgba(123, 104, 238, 0.1), rgba(255, 215, 0, 0.1));
+}
+
+/* ===== 冰蓝 (Ganyu) ===== */
+[data-theme="ganyu"] {
+    --primary: #4A90D9;
+    --primary-light: #6AA8F0;
+    --primary-dark: #3A78C0;
+    --secondary: #B388FF;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #0A1020;
+    --bg-main: #0F1830;
+    --bg-card: #152040;
+    --bg-card-hover: #1C2850;
+    --text-accent: #4A90D9;
+    --shadow-glow: 0 0 20px rgba(74, 144, 217, 0.3);
+    --gradient-primary: linear-gradient(135deg, #4A90D9, #B388FF);
+    --gradient-bg: linear-gradient(135deg, #0F1830, #152040);
+    --gradient-card: linear-gradient(145deg, rgba(74, 144, 217, 0.1), rgba(179, 136, 255, 0.1));
+}
+
+/* ===== 银灰 (2B) ===== */
+[data-theme="2b"] {
+    --primary: #E0E0E0;
+    --primary-light: #FFFFFF;
+    --primary-dark: #B0B0B0;
+    --secondary: #FF4757;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #0A0A0A;
+    --bg-main: #121212;
+    --bg-card: #1E1E1E;
+    --bg-card-hover: #2A2A2A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --text-muted: #808080;
+    --text-accent: #E0E0E0;
+    --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.2);
+    --gradient-primary: linear-gradient(135deg, #E0E0E0, #FF4757);
+    --gradient-bg: linear-gradient(135deg, #121212, #1E1E1E);
+    --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 71, 87, 0.05));
+}
+
+/* ===== 梦紫 (Emilia) ===== */
+[data-theme="emilia"] {
+    --primary: #9B59B6;
+    --primary-light: #BB79D6;
+    --primary-dark: #7B3996;
+    --secondary: #00D9FF;
+    --accent-cyan: #00D9FF;
+    --accent-gold: #FFD700;
+    --accent-green: #4ADE80;
+    --accent-red: #FF4757;
+    --bg-dark: #0F0A1A;
+    --bg-main: #1A1230;
+    --bg-card: #221840;
+    --bg-card-hover: #2A1E50;
+    --text-accent: #9B59B6;
+    --shadow-glow: 0 0 20px rgba(155, 89, 182, 0.3);
+    --gradient-primary: linear-gradient(135deg, #9B59B6, #00D9FF);
+    --gradient-bg: linear-gradient(135deg, #1A1230, #221840);
+    --gradient-card: linear-gradient(145deg, rgba(155, 89, 182, 0.1), rgba(0, 217, 255, 0.1));
+}
+
+/* ===== 樱粉 (Sakura) ===== */
+[data-theme="sakura"] {
+    --primary: #FF69B4;
+    --primary-light: #FF8DC7;
+    --primary-dark: #E55A9E;
+    --secondary: #FFB6C1;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FF9800;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #FFF5F8;
+    --bg-main: #FFFFFF;
+    --bg-card: #FFF0F3;
+    --bg-card-hover: #FFE8ED;
+    --bg-overlay: rgba(255, 245, 248, 0.9);
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --text-accent: #FF69B4;
+    --border-color: rgba(0, 0, 0, 0.06);
+    --border-hover: rgba(0, 0, 0, 0.12);
+    --shadow-sm: 0 2px 8px rgba(255, 105, 180, 0.1);
+    --shadow-md: 0 4px 16px rgba(255, 105, 180, 0.15);
+    --shadow-lg: 0 8px 32px rgba(255, 105, 180, 0.2);
+    --shadow-glow: 0 0 20px rgba(255, 105, 180, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #FF69B4, #FFB6C1);
+    --gradient-bg: linear-gradient(135deg, #FFF5F8, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(255, 105, 180, 0.08), rgba(255, 182, 193, 0.08));
+}
+
+/* ===== 天蓝 (SkyBlue) ===== */
+[data-theme="skyblue"] {
+    --primary: #4A90D9;
+    --primary-light: #6AA8F0;
+    --primary-dark: #3A78C0;
+    --secondary: #87CEEB;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FF9800;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #F0F7FF;
+    --bg-main: #FFFFFF;
+    --bg-card: #E8F4FD;
+    --bg-card-hover: #D6ECFA;
+    --bg-overlay: rgba(240, 247, 255, 0.9);
+    --text-primary: #1A365D;
+    --text-secondary: #4A6FA5;
+    --text-muted: #8BABC4;
+    --text-accent: #4A90D9;
+    --border-color: rgba(74, 144, 217, 0.1);
+    --border-hover: rgba(74, 144, 217, 0.2);
+    --shadow-sm: 0 2px 8px rgba(74, 144, 217, 0.1);
+    --shadow-md: 0 4px 16px rgba(74, 144, 217, 0.15);
+    --shadow-lg: 0 8px 32px rgba(74, 144, 217, 0.2);
+    --shadow-glow: 0 0 20px rgba(74, 144, 217, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #4A90D9, #87CEEB);
+    --gradient-bg: linear-gradient(135deg, #F0F7FF, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(74, 144, 217, 0.08), rgba(135, 206, 235, 0.08));
+}
+
+/* ===== 薄荷 (Mint) ===== */
+[data-theme="mint"] {
+    --primary: #2ECC71;
+    --primary-light: #4ADE80;
+    --primary-dark: #27AE60;
+    --secondary: #A8E6CF;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FF9800;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #F0FFF4;
+    --bg-main: #FFFFFF;
+    --bg-card: #E8F5E9;
+    --bg-card-hover: #D7F0DB;
+    --bg-overlay: rgba(240, 255, 244, 0.9);
+    --text-primary: #1B5E20;
+    --text-secondary: #388E3C;
+    --text-muted: #81C784;
+    --text-accent: #2ECC71;
+    --border-color: rgba(46, 204, 113, 0.1);
+    --border-hover: rgba(46, 204, 113, 0.2);
+    --shadow-sm: 0 2px 8px rgba(46, 204, 113, 0.1);
+    --shadow-md: 0 4px 16px rgba(46, 204, 113, 0.15);
+    --shadow-lg: 0 8px 32px rgba(46, 204, 113, 0.2);
+    --shadow-glow: 0 0 20px rgba(46, 204, 113, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #2ECC71, #A8E6CF);
+    --gradient-bg: linear-gradient(135deg, #F0FFF4, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(46, 204, 113, 0.08), rgba(168, 230, 207, 0.08));
+}
+
+/* ===== 暖阳 (Sunshine) ===== */
+[data-theme="sunshine"] {
+    --primary: #F39C12;
+    --primary-light: #F5B041;
+    --primary-dark: #E67E22;
+    --secondary: #FDEBD0;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FF9800;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #FFF8F0;
+    --bg-main: #FFFFFF;
+    --bg-card: #FEF5E7;
+    --bg-card-hover: #FDE8CC;
+    --bg-overlay: rgba(255, 248, 240, 0.9);
+    --text-primary: #7D5A29;
+    --text-secondary: #A67C52;
+    --text-muted: #C4A882;
+    --text-accent: #F39C12;
+    --border-color: rgba(243, 156, 18, 0.1);
+    --border-hover: rgba(243, 156, 18, 0.2);
+    --shadow-sm: 0 2px 8px rgba(243, 156, 18, 0.1);
+    --shadow-md: 0 4px 16px rgba(243, 156, 18, 0.15);
+    --shadow-lg: 0 8px 32px rgba(243, 156, 18, 0.2);
+    --shadow-glow: 0 0 20px rgba(243, 156, 18, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #F39C12, #FDEBD0);
+    --gradient-bg: linear-gradient(135deg, #FFF8F0, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(243, 156, 18, 0.08), rgba(253, 235, 208, 0.08));
+}
+
+/* ===== 薰衣草 (Lavender) ===== */
+[data-theme="lavender"] {
+    --primary: #9B59B6;
+    --primary-light: #BB79D6;
+    --primary-dark: #7B3996;
+    --secondary: #D7BDE2;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FF9800;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #F8F0FF;
+    --bg-main: #FFFFFF;
+    --bg-card: #F3E8FF;
+    --bg-card-hover: #E8D5FF;
+    --bg-overlay: rgba(248, 240, 255, 0.9);
+    --text-primary: #4A235A;
+    --text-secondary: #7D3C98;
+    --text-muted: #AF7AC5;
+    --text-accent: #9B59B6;
+    --border-color: rgba(155, 89, 182, 0.1);
+    --border-hover: rgba(155, 89, 182, 0.2);
+    --shadow-sm: 0 2px 8px rgba(155, 89, 182, 0.1);
+    --shadow-md: 0 4px 16px rgba(155, 89, 182, 0.15);
+    --shadow-lg: 0 8px 32px rgba(155, 89, 182, 0.2);
+    --shadow-glow: 0 0 20px rgba(155, 89, 182, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #9B59B6, #D7BDE2);
+    --gradient-bg: linear-gradient(135deg, #F8F0FF, #FFFFFF);
+    --gradient-card: linear-gradient(145deg, rgba(155, 89, 182, 0.08), rgba(215, 189, 226, 0.08));
+}
+
+/* ===== 海浪 (Ocean) ===== */
+[data-theme="ocean"] {
+    --primary: #006994;
+    --primary-light: #008CBA;
+    --primary-dark: #00527A;
+    --secondary: #40E0D0;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FFD700;
+    --accent-green: #4CAF50;
+    --accent-red: #F44336;
+    --bg-dark: #0A1628;
+    --bg-main: #0F1F3A;
+    --bg-card: #152747;
+    --bg-card-hover: #1C3355;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8D4E3;
+    --text-muted: #6B8FA3;
+    --text-accent: #40E0D0;
+    --border-color: rgba(64, 224, 208, 0.1);
+    --border-hover: rgba(64, 224, 208, 0.2);
+    --shadow-sm: 0 2px 8px rgba(0, 105, 148, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 105, 148, 0.25);
+    --shadow-lg: 0 8px 32px rgba(0, 105, 148, 0.3);
+    --shadow-glow: 0 0 20px rgba(64, 224, 208, 0.3);
+    --glass-bg: rgba(15, 31, 58, 0.8);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #006994, #40E0D0);
+    --gradient-bg: linear-gradient(135deg, #0F1F3A, #152747);
+    --gradient-card: linear-gradient(145deg, rgba(0, 105, 148, 0.1), rgba(64, 224, 208, 0.1));
+}
+
+/* ===== 火焰 (Fire) ===== */
+[data-theme="fire"] {
+    --primary: #FF4500;
+    --primary-light: #FF6B35;
+    --primary-dark: #CC3700;
+    --secondary: #FFD700;
+    --accent-cyan: #00BCD4;
+    --accent-gold: #FFD700;
+    --accent-green: #4CAF50;
+    --accent-red: #FF4500;
+    --bg-dark: #1A0A00;
+    --bg-main: #2D1400;
+    --bg-card: #3D1C00;
+    --bg-card-hover: #4D2400;
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFD4B8;
+    --text-muted: #CC8866;
+    --text-accent: #FFD700;
+    --border-color: rgba(255, 69, 0, 0.15);
+    --border-hover: rgba(255, 69, 0, 0.25);
+    --shadow-sm: 0 2px 8px rgba(255, 69, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(255, 69, 0, 0.25);
+    --shadow-lg: 0 8px 32px rgba(255, 69, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(255, 69, 0, 0.4);
+    --glass-bg: rgba(45, 20, 0, 0.85);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #FF4500, #FFD700);
+    --gradient-bg: linear-gradient(135deg, #2D1400, #3D1C00);
+    --gradient-card: linear-gradient(145deg, rgba(255, 69, 0, 0.1), rgba(255, 215, 0, 0.1));
+}
+
+/* ===== 极光 (Aurora) ===== */
+[data-theme="aurora"] {
+    --primary: #00FF7F;
+    --primary-light: #33FF99;
+    --primary-dark: #00CC66;
+    --secondary: #9400D3;
+    --accent-cyan: #00CED1;
+    --accent-gold: #FFD700;
+    --accent-green: #00FF7F;
+    --accent-red: #FF4757;
+    --bg-dark: #0A0A1A;
+    --bg-main: #0D0D2B;
+    --bg-card: #141438;
+    --bg-card-hover: #1B1B45;
+    --text-primary: #FFFFFF;
+    --text-secondary: #C8C8E8;
+    --text-muted: #8888AA;
+    --text-accent: #00FF7F;
+    --border-color: rgba(0, 255, 127, 0.1);
+    --border-hover: rgba(0, 255, 127, 0.2);
+    --shadow-sm: 0 2px 8px rgba(148, 0, 211, 0.2);
+    --shadow-md: 0 4px 16px rgba(148, 0, 211, 0.25);
+    --shadow-lg: 0 8px 32px rgba(148, 0, 211, 0.3);
+    --shadow-glow: 0 0 20px rgba(0, 255, 127, 0.3);
+    --glass-bg: rgba(13, 13, 43, 0.85);
+    --glass-blur: blur(20px);
+    --gradient-primary: linear-gradient(135deg, #00FF7F, #9400D3);
+    --gradient-bg: linear-gradient(135deg, #0D0D2B, #141438);
+    --gradient-card: linear-gradient(145deg, rgba(0, 255, 127, 0.08), rgba(148, 0, 211, 0.08));
+}
